@@ -1772,8 +1772,10 @@ int main(int argc, char* argv[]) {
 #if SDL_VERSION_ATLEAST(1, 2, 14)
 	putenv(const_cast<char*>("SDL_DISABLE_LOCK_KEYS=1"));
 #endif
-	if ( SDL_Init( SDL_INIT_AUDIO|SDL_INIT_VIDEO|SDL_INIT_TIMER|SDL_INIT_CDROM
-		|SDL_INIT_NOPARACHUTE
+	if ( SDL_Init( SDL_INIT_AUDIO|SDL_INIT_VIDEO|SDL_INIT_TIMER|SDL_INIT_NOPARACHUTE
+#ifdef USE_SDL_CDROM
+		|SDL_CDROM
+#endif
 		) < 0 ) E_Exit("Can't init SDL %s",SDL_GetError());
 	sdl.inited = true;
 
