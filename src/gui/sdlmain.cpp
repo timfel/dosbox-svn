@@ -99,6 +99,11 @@ PFNGLPIXELDATARANGENVPROC glPixelDataRangeNV = NULL;
 extern char** environ;
 #endif
 
+#ifdef DISABLE_SDL_HWSURFACE
+#undef SDL_HWSURFACE
+#define SDL_HWSURFACE SDL_SWSURFACE
+#endif
+
 #ifdef WIN32
 #ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
